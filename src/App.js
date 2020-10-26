@@ -1,18 +1,13 @@
 import React from 'react';
 import './App.scss';
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import Home from './components/Home'
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
       <Navbar/>
-        
-       
-       
-      </header>
+      <Home/>
     </div>
   );
 }
-
-export default App;
