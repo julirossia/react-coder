@@ -1,5 +1,6 @@
-import React from "react";
-import "../App.scss";
+import React from 'react';
+import ItemCount from './ItemCount';
+import '../App.scss';
 
 function List({ productName, description }) {
   return (
@@ -9,6 +10,7 @@ function List({ productName, description }) {
         <li className="items">{productName}</li>
       </ul>
       <p>{description}</p>
+      <ItemCount/>
     </div>
     </main>
   );
