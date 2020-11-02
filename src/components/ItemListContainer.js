@@ -1,51 +1,80 @@
-import React from 'react';
+import React, { useState, useEffect, Fragment } from "react";
 import ItemCount from './ItemCount';
-import '../App.scss';
+ import '../App.scss';
+import ItemDetail from "./ItemDetail";
 
-function List({ productName, description }) {
-  return (
-      <main className="card-container">
-    <div className="cards">
-      <ul>
-        <li className="items">{productName}</li>
-      </ul>
-      <p>{description}</p>
-      <ItemCount/>
-    </div>
+function List(props) {
+  const contentList = (
+    <main className="card-container">
+      {props.item.map((item) =>
+        <Fragment key={item.id}/> 
+        
+          )}
     </main>
   );
-}
+ 
+  const contentCard = props.item.map((item) =>
+  <div className="cards" key={item.id}>
+      <li>{item.productName}</li>
+      <p>Precio:{item.precio}</p>
+<ItemDetail/>
+<ItemCount/>
+    </div>
+    
+  );
+  const getItem = ()=>{
+    return new Promise((res,rej)=>{
+res ([
+  {id: 1, productName:"Producto 1", precio:500},
+  {id: 2, productName:"Producto 2",precio:600},
+  {id: 3, productName:"Producto 3",precio:850},
+  {id: 4, productName:"Producto 4",precio:550},
+  {id: 5, productName:"Producto 5",precio:750},
+  {id: 6, productName:"Producto 6",precio:590}
+  
+])
+    },3000)
+  }
+  const [item, setItem]=useState();
+    
+  useEffect(()=>{
+      console.log("Lista");
 
-function ItemListContainer() {
+  
+      getItem().then(res=>{
+          setItem(item)
+           console.log(res)
+
+      },[])
+  })
+  
+ 
   return (
-    < >
-        <List 
-          productName="Producto 1"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta venenatis nisi."
-        ></List>
-        <List
-          productName="Producto 2"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta venenatis nisi."
-        ></List>
-        <List
-          productName="Producto 3"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta venenatis nisi."
-        ></List>
-         <List
-          productName="Producto 4"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta venenatis nisi."
-        ></List>
-         <List
-          productName="Producto 5"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta venenatis nisi."
-        ></List>
-         <List
-          productName="Producto 6"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porta venenatis nisi."
-        ></List>
-        
-    </>
+    <div>
+      {contentList}
+      {contentCard}
+      
+    </div>
   );
 }
+const item = [
+  {id: 1, productName:"Producto 1", precio:500},
+  {id: 2, productName:"Producto 2",precio:600},
+  {id: 3, productName:"Producto 3",precio:850},
+  {id: 4, productName:"Producto 4",precio:550},
+  {id: 5, productName:"Producto 5",precio:750},
+  {id: 6, productName:"Producto 6",precio:590}
+  
+];
+
+function ItemListContainer() {
+    
+    return ( 
+      <>
+   <List item={item}/> 
+  </>
+   );
+  }
+ 
 
 export default ItemListContainer;

@@ -17,6 +17,8 @@ function Adder({initial,stock, onAdd, min}) {
   function less() {
     if(clicks > 0){
     setClicks(clicks - min);
+    setTimeout(() => setClicks(alert("ESTA SEGURO QU QUIERE ELIMINAR EL PRODUCTO?")), 2000);
+
     console.log(`usuario eliminó ${clicks} productos`);
   }
 }
