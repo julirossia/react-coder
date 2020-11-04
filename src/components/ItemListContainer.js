@@ -4,22 +4,16 @@ import ItemCount from './ItemCount';
 import ItemDetail from "./ItemDetail";
 
 function List(props) {
-  const contentList = (
-    <main className="card-container">
-      {props.item.map((item) =>
-        <Fragment key={item.id}/> 
-        
-          )}
-    </main>
-  );
- 
-  const contentCard = props.item.map((item) =>
+  
+      const contentCard = props.item.map((item) =>
+      <main className="card-container">
   <div className="cards" key={item.id}>
       <li>{item.productName}</li>
       <p>Precio:{item.precio}</p>
 <ItemDetail/>
 <ItemCount/>
     </div>
+      </main>
     
   );
   const getItem = ()=>{
@@ -51,8 +45,7 @@ res ([
  
   return (
     <div>
-      {contentList}
-      {contentCard}
+    {contentCard}
       
     </div>
   );
