@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link} from 'react-router-dom';
 import "../App.scss";
 
 
@@ -17,7 +18,7 @@ function Adder({initial,stock, onAdd, min}) {
   function less() {
     if(clicks > 0){
     setClicks(clicks - min);
-    setTimeout(() => setClicks(alert("ESTA SEGURO QU QUIERE ELIMINAR EL PRODUCTO?")), 2000);
+    setTimeout(() => setClicks(alert("ESTA SEGURO QUE QUIERE ELIMINAR EL PRODUCTO?")), 2000);
 
     console.log(`usuario eliminó ${clicks} productos`);
   }
@@ -31,7 +32,13 @@ function Adder({initial,stock, onAdd, min}) {
         <i class="fas fa-plus-square" onClick={more}></i>
       </div>
       <button className="add" onClick={() => onAdd(clicks)}
-       > Agregar</button>
+       > 
+      <Link to={`/cart`}>
+            Agregar 
+      </Link>
+
+             
+</button>
     </>
   );
 } 
@@ -40,7 +47,7 @@ export default function ItemCount() {
 
   return (
     <>
-     <Adder initial={1} stock={10} min={1} onAdd={clicks => alert(`Agregados al carrito: ${clicks}`)}/>
+     <Adder initial={1} stock={10} min={1} onAdd={clicks => console.log(`Agregados al carrito: ${clicks}`)}/>
    </>
   );
 }

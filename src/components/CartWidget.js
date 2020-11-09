@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "../App.scss";
 
 function CartWidget() {
   return (
-    <>
-<i className="fas fa-shopping-cart"></i>
-    </>
+    <Fragment>
+<li className="fas fa-shopping-cart">
+</li>
+    </Fragment>
   );
 }
 

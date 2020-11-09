@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap");
 
-body{
+body {
   background-color: #313131;
   margin: 0;
   padding: 0;
 }
-.menu{
-  background:#292929;
+.menu {
+  background: #292929;
   padding: 1px 10px;
   display: flex;
   justify-content: space-between;
@@ -14,71 +14,71 @@ body{
   .logo {
     font-size: 18px;
     color: #d7ff38;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     padding: 0 10px;
   }
-  .fa-shopping-cart{
+  .fa-shopping-cart {
     font-size: 18px;
     color: #d7ff38;
-   padding: 20px 10px;
-   }
+    padding: 20px 10px;
+  }
 }
-.card-container{
+.card-container {
   flex-wrap: wrap;
-  
-}
-.cards{
-  padding: 1rem 2rem 1rem 2rem;
-  background-color: #cac9c9;
-  border-radius: 10px;
-  width: 10rem;
+
+  .cards {
+    padding: 1rem 2rem 1rem 2rem;
+    background-color: #cac9c9;
+    border-radius: 10px;
+    width: 10rem;
     float: left;
-  margin: 1.4rem;
-  
-  ul{
-    margin: 0;
-    padding: 0;
-    .items{
-      font-family: 'Oswald', sans-serif;
-  text-align: left;
-        list-style: none;
+    margin: 1.4rem;
+    li.title {
+      list-style: none;
+      a {
+        text-decoration: none;
+        font-family: "Oswald", sans-serif;
+        text-align: left;
         font-size: 16px;
         color: #292929;
-        border-bottom:2px solid #292929;
+        border-bottom: 2px solid #292929;
+        &:hover {
+          color: #d7ff38;
+        }
+      }
+    }
+
+    p {
+      color: #292929;
+      font-family: "Roboto Mono", monospace;
+      font-size: 14px;
     }
   }
-  p{
-    color: #292929;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 14px;
-  }
-
 }
-.more{
+.more {
   display: flex;
-text-align: center;  
-i{
+  text-align: center;
+  i {
     font-size: 20px;
     color: #292929;
     margin: auto;
- }
-  p{
+  }
+  p {
     color: #292929;
-    font-family: 'Oswald', sans-serif;
+    font-family: "Oswald", sans-serif;
     font-size: 12px;
   }
 }
-.add{
+.add {
   background: #d7ff38;
-    border: unset;
-    color: #292929;
-    font-family: 'Oswald', sans-serif;
-    font-size: 13px;
-    border-radius: 2px;
-    padding: 3px 35px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    cursor: pointer;
+  border: unset;
+  color: #292929;
+  font-family: "Oswald", sans-serif;
+  font-size: 13px;
+  border-radius: 2px;
+  padding: 3px 35px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  cursor: pointer;
 }
-
