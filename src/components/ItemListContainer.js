@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useParams } from "react";
+import React, { useState, useEffect } from "react";
  import '../App.scss';
 import {Link} from 'react-router-dom';
 
@@ -20,20 +20,26 @@ res ([
 };
 function ItemListContainer() {
   const [items, setItems] = useState([]);
-/*    const {ids} = useParams();
- */
-  useEffect(() => {
-      console.log('Lista');
 
-      getItem().then((response) => {
-          setItems(response);
-      }, []);
-  });
+  useEffect(() => {
+
+    console.log('Lista');
+
+
+
+    getItem().then((response) => {
+
+        setItems(response);
+
+    });
+
+}, []);
+
   return items.map((item) => (
     <main className='card-container'>
         <div className='cards' key={item.id}>
             <li className="title">
-            <Link to={`/description/${item.id.description}`}>
+            <Link to={`/description/${item.id}`}>
       {item.productName}
       </Link>
      </li>

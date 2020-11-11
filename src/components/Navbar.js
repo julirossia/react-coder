@@ -4,8 +4,10 @@ import CartWidget from './CartWidget';
 import Cart from './Cart';
 import "../App.scss";
 
+
 function Navbar() {
-  return (
+/*   const cart = useCartContext
+ */  return (
     <>
       <nav className="menu">
            <h3 className="logo">

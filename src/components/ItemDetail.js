@@ -1,4 +1,5 @@
  import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import '../App.scss';
 import ItemCount from './ItemCount';
 
@@ -16,6 +17,8 @@ const getDescription = () => {
 };
 function ItemDetail() {
   const [description, setDescription] = useState({});
+  const {id} = useParams();
+  console.log(id)
 
   useEffect(() => {
       console.log('Detalle de Producto');
