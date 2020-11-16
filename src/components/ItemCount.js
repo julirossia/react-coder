@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import {useCartContext} from '../context/cartContex';
 import "../App.scss";
 
 function Adder({ initial, stock, onAdd, min }) {
@@ -49,6 +50,7 @@ function Adder({ initial, stock, onAdd, min }) {
         <div>
           <button className="add" onClick={() => onAdd(clicks)}>
             <Link to={`/cart`}>Terminar mi Compra</Link>
+      
           </button>
         </div>
       )}
@@ -65,6 +67,8 @@ export default function ItemCount() {
         min={1}
         onAdd={(clicks) => alert(`Agregados al carrito: ${clicks}`)}
       />
+              <useCartContext value={useCartContext.carts}/>
+
     </>
   );
 }

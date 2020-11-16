@@ -4,6 +4,7 @@ import '../App.scss';
 import ItemCount from './ItemCount';
 
 
+
 const getDescription = () => {
   return new Promise((res, rej) => {
       setTimeout(() => {

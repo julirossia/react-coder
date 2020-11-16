@@ -2,21 +2,22 @@ import React from "react";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import CartWidget from './CartWidget';
 import Cart from './Cart';
+import {useCartContext} from '../context/cartContex';
 import "../App.scss";
 
 
 function Navbar() {
-/*   const cart = useCartContext
- */  return (
+/*    const {cart, add, remove} = useCartContext()
+ */   return (
     <>
       <nav className="menu">
            <h3 className="logo">
-            ecommerce-app
+            ecommerce-app {/* {cart.length} */}
           </h3>
           <BrowserRouter>
           <Switch>
 
-          <CartWidget/>
+          <CartWidget />
           <Route exact path='/cart'><Cart/></Route>
           </Switch>
 
