@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
- import '../App.scss';
+import React, { useState, useEffect, useContext } from "react";
+import CartContex from '../context/cartContex';
+import '../App.scss';
 import {Link} from 'react-router-dom';
 
 const getItem = ()=>{

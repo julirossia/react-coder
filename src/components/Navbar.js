@@ -7,12 +7,11 @@ import "../App.scss";
 
 
 function Navbar() {
-/*    const {cart, add, remove} = useCartContext()
- */   return (
+    return (
     <>
       <nav className="menu">
            <h3 className="logo">
-            ecommerce-app {/* {cart.length} */}
+            ecommerce-app 
           </h3>
           <BrowserRouter>
           <Switch>

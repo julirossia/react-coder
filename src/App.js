@@ -5,11 +5,13 @@ import Home from './components/Home';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import ItemDetail from './components/ItemDetail';
 import Cart from './components/Cart';
-import CartContext, {useCartContext} from './context/cartContex';
+import { CartProvider } from './context/cartContex';
+
 
 export default function App() {
+ 
   return (
-    <useCartContext>
+    <CartProvider>
     <BrowserRouter>
           <Navbar/>
       <Switch>
@@ -19,9 +21,9 @@ export default function App() {
         <Route exact path='/description/:id'>
    <ItemDetail/>
         </Route>
-      <Route exact path='/cart'><Cart/></Route>
+      <Route exact path='/cart'><Cart /></Route>
      </Switch>
     </BrowserRouter>
-    </useCartContext>
+    </CartProvider>
   );
 }

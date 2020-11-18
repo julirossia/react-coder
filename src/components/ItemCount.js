@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import {useCartContext} from '../context/cartContex';
+import CartContext from '../context/cartContex';
 import "../App.scss";
 
 function Adder({ initial, stock, onAdd, min }) {
   const [clicks, setClicks] = useState(initial);
+/*    const { items, setItems } = useContext(CartContext);
+ */ 
 
   function more() {
     if (clicks < stock) {
@@ -27,8 +29,12 @@ function Adder({ initial, stock, onAdd, min }) {
     }
   }
 
+
   const [isOpened, setIsOpened] = useState(true);
   function toggle() {
+  /*   setClicks((value) => value + clicks);
+    onAdd.clicks = clicks;
+    setItems((value) => [...value, clicks]); */
     setIsOpened((wasOpened) => !wasOpened);
   }
 
@@ -67,7 +73,6 @@ export default function ItemCount() {
         min={1}
         onAdd={(clicks) => alert(`Agregados al carrito: ${clicks}`)}
       />
-              <useCartContext value={useCartContext.carts}/>
 
     </>
   );

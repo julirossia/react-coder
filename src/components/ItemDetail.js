@@ -1,5 +1,6 @@
- import React, { useState, useEffect } from "react";
+ import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
+import CartContext from '../context/cartContex';
 import '../App.scss';
 import ItemCount from './ItemCount';
 
@@ -17,7 +18,9 @@ const getDescription = () => {
   });
 };
 function ItemDetail() {
-  const [description, setDescription] = useState({});
+    const [description, setDescription] = useState({});
+  
+
   const {id} = useParams();
   console.log(id)
 
@@ -29,12 +32,13 @@ function ItemDetail() {
           console.log(res);
       }, []);
   });
+  
   return (
     <main className="card-container">
 
     <div className="cards" >
         <p><b>Descripción:</b>{description.descrip}</p>
-        <ItemCount/>
+        <ItemCount />
      </div>
      </main>
   );
