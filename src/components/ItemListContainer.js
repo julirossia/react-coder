@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
-import CartContex from '../context/cartContex';
+import React, { useState, useEffect } from "react";
 import '../App.scss';
 import {Link} from 'react-router-dom';
+import {getFirestore} from '../firebase'
 
 const getItem = ()=>{
   return new Promise((res,rej)=>{
@@ -25,7 +25,7 @@ function ItemListContainer() {
   useEffect(() => {
 
     console.log('Lista');
-
+const db = getFirestore()
 
 
     getItem().then((response) => {

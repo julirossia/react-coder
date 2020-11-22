@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import CartContext from '../context/cartContex';
+import { useCartContext } from '../context/cartContex';
 import "../App.scss";
 
-function Adder({ initial, stock, onAdd, min }) {
+function Adder({ initial, stock, onAdd, min, item}) {
   const [clicks, setClicks] = useState(initial);
-/*    const { items, setItems } = useContext(CartContext);
- */ 
+  const { add } = useCartContext();
+
 
   function more() {
     if (clicks < stock) {
@@ -32,9 +32,6 @@ function Adder({ initial, stock, onAdd, min }) {
 
   const [isOpened, setIsOpened] = useState(true);
   function toggle() {
-  /*   setClicks((value) => value + clicks);
-    onAdd.clicks = clicks;
-    setItems((value) => [...value, clicks]); */
     setIsOpened((wasOpened) => !wasOpened);
   }
 
@@ -54,7 +51,7 @@ function Adder({ initial, stock, onAdd, min }) {
       )}
       {isOpened ||  (
         <div>
-          <button className="add" onClick={() => onAdd(clicks)}>
+          <button className="add" onClick={() => add(clicks)}>
             <Link to={`/cart`}>Terminar mi Compra</Link>
       
           </button>
