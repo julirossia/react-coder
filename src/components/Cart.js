@@ -1,22 +1,25 @@
-import React, {useEffect} from 'react';
+ import React, {useEffect, useState} from 'react';
 import '../App.scss';
 import { useCartContext } from '../context/cartContex';
+import { getFirestore } from '../firebase'
 
 function Cart() {
-        const { carts, setCart, setClicks, clicks, id } = useCartContext();
+        const { carts, setCart } = useCartContext();
+        const [items, setItems] = useState([]);
+
       
-        const deleteProduct = (id) => {
-          setCart(carts.filter((carts, i) => i !== id));
+        const deleteProduct = (carts) => {
+          setCart(carts.filter((carts, i) => i !== carts));
         };
   
     return (
         <main className='card-container'>
-        <div className='cards' key={carts}>
+        <div className='cards' key={carts.id}>
             <h1>Carrito</h1>
-            {carts.map((carts, id) => (
-                <tr key={id}>
+            {carts.map((carts) => (
+                <tr key={carts}>
                 <p scope="col">Cantidad:{carts}</p>
-                <p scope="col">Artículo:{carts.id}</p>
+                <p scope="col">Artículo:{carts.title}</p>
                 <p scope="col">Precio:${carts.price}</p>
                 <p scope="col">Total:${carts * carts.price}</p>
                 <p scope="col"></p>
@@ -35,3 +38,5 @@ function Cart() {
 }
 
 export default Cart;
+
+

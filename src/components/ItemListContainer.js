@@ -1,57 +1,49 @@
 import React, { useState, useEffect } from "react";
 import '../App.scss';
-import {Link} from 'react-router-dom';
-import {getFirestore} from '../firebase'
+import { Link } from 'react-router-dom';
+import { getFirestore } from '../firebase'
 
-const getItem = ()=>{
-  return new Promise((res,rej)=>{
-    setTimeout(() => {
 
-res ([
-{id: 1, productName:"Producto 1", precio:500},
-{id: 2, productName:"Producto 2",precio:600},
-{id: 3, productName:"Producto 3",precio:850},
-{id: 4, productName:"Producto 4",precio:550},
-{id: 5, productName:"Producto 5",precio:750},
-{id: 6, productName:"Producto 6",precio:590}
-
-]);
-}, 1500);
-});
-};
 function ItemListContainer() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
 
     console.log('Lista');
-const db = getFirestore()
+    const db = getFirestore()
+    const itemCollection = db.collection('items');
+    const pricedItems = itemCollection.where ("price", ">", 3000);
 
+    pricedItems.get().then((querySnapshot) => {
+      if (querySnapshot.size === 0) {
+        console.log('no results');
+      }
+      setItems(
+        querySnapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+          console.log(doc.data());
+        })
+      );    })
 
-    getItem().then((response) => {
+  }, []);
 
-        setItems(response);
-
-    });
-
-}, []);
-
-  return items.map((item) => (
+  return items.map((items) => (
     <main className='card-container'>
-        <div className='cards' key={item.id}>
-            <li className="title">
-            <Link to={`/description/${item.id}`}>
-      {item.productName}
-      </Link>
-     </li>
-            <p>Precio:{item.precio}</p>
+      <div className='cards' key={items.id}>
+        <li className="title">
+          <Link to={`/description/${items.id}`}>
+            {items.title}
+          </Link>
+        </li>
+        <p>Descripcion:{items.description}</p>
+        <p>Precio:{items.price}</p>
       </div>
+      
     </main>
-));
+  ));
 }
 
 export default ItemListContainer;
-    
-  
-  
- 
+
+
+
