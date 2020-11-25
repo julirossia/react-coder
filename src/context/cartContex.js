@@ -12,13 +12,13 @@ export function CartProvider({ initialValue = [], children }) {
             if (!carts.find(c => c === newCart) && newCart) {
               setCarts([...carts, newCart]);
             } else {
-              console.log(`Pokemon '${newCart}' not added`);
+              console.log(`Cart '${newCart}' not added`);
             }
           
     }
     function remove(removeCart) {
         const removedCarts = carts.filter(
-            (carts) => carts.productName !== removeCart.productName,
+            (carts) => carts.name !== removeCart.name,
         );
         setCarts(removedCarts);
     }

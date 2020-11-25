@@ -14,16 +14,19 @@ function ItemDetail() {
     useEffect(() => {
         const db = getFirestore();
         const itemDetail = db.collection("items");
-        itemDetail.get().then((querySnapshot)=>{
-            if(querySnapshot.size===0){
+        
+        itemDetail.get().then((docSnapshot)=>{
+            if(docSnapshot.size===0){
                 console.log('no results')
             }
-            setItems(querySnapshot.docs.map(doc=>doc.data()))
+            setItems(docSnapshot.docs.map(doc=>doc.data()))
         })
     }, []); 
     return items.map((items) =>(
         <main className='card-container'>
             <div className='cards'>
+                <p><b>                {items.title}
+</b></p>
                 <p>
 
                     <b>Descripción:</b>
